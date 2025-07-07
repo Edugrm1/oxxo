@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¿Un cafecito del OXXO?</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #fff8f0;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #d35400;
+      font-size: 2.5em;
+    }
+
+    .buttons {
+      margin-top: 40px;
+      position: relative;
+      height: 150px;
+    }
+
+    button {
+      font-size: 1.2em;
+      padding: 15px 30px;
+      margin: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yes {
+      background-color: #27ae60;
+      color: white;
+    }
+
+    #no {
+      background-color: #c0392b;
+      color: white;
+      position: absolute;
+    }
+
+    .coffee-img {
+      width: 200px;
+      margin-bottom: 20px;
+    }
+
+    /* Modal bonito */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(3px);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      max-width: 90%;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .modal-content h2 {
+      color: #d35400;
+      margin-bottom: 15px;
+    }
+
+    .modal-content p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+    }
+
+    .modal-content button {
+      background-color: #27ae60;
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>¿Quieres ir por un café al OXXO? ☕</h1>
+  <div class="buttons">
+    <button id="yes">Sí</button>
+    <button id="no">No</button>
+  </div>
+
+  <!-- Modal personalizado -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h2>okeeey ☕💖</h2>
+      <p> me enojaba si decias que no jaja </p>
+      <button onclick="closeModal()">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    const noButton = document.getElementById("no");
+    const yesButton = document.getElementById("yes");
+    const modal = document.getElementById("modal");
+
+    function moveButton() {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      noButton.style.left = x + "px";
+      noButton.style.top = y + "px";
+    }
+
+    noButton.addEventListener("mouseover", moveButton);
+    noButton.addEventListener("touchstart", function (e) {
+      e.preventDefault();
+      moveButton();
+    });
+
+    yesButton.addEventListener("click", () => {
+      modal.style.display = "flex";
+    });
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+  </script>
+</body>
+</html>
